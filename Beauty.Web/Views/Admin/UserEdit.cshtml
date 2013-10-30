@@ -1,0 +1,214 @@
+﻿@model Beauty.Web.Models.WebUser
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UserEdit", "admin", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   
+    @Html.ValidationSummary("", new { @class = "text-error" })
+  
+    <div class="hide">
+
+          @Html.TextBoxFor(m => m.UserName)
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.UserName, new { disabled = "disabled" })
+
+        </div>
+    </div>
+    <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Password)
+
+        </div>
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Email)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.QQ, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.QQ)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Mobile, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Mobile)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Province, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Province)
+
+        </div>
+
+    </div>
+    
+          <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.City, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.City)
+
+        </div>
+
+    </div>
+     
+            <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.ShopAddress, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.ShopAddress)
+
+        </div>
+
+    </div>
+    <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Point, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Point)
+
+        </div>
+
+    </div>
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.ZFB, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.ZFB)
+
+        </div>
+
+    </div>
+    <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Role, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DropDownListFor(m => m.Role, ViewBag.Rolelist as IEnumerable<SelectListItem> )
+
+        </div>
+
+    </div>
+    <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Rate, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+         @Html.TextBoxFor(m => m.Rate)
+
+        </div>
+
+    </div>
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.TimePoint, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+         @Html.TextBoxFor(m => m.TimePoint)
+
+        </div>
+
+    </div>
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.MaxPoint, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+         @Html.TextBoxFor(m => m.MaxPoint)
+
+        </div>
+
+    </div>
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="保存" class="btn" />  <a class="btn" id="btn_del">删除</a><a class="btn" href="/admin/usermanager">返回</a>
+            </div>
+    </div>
+}
+
+ <div id="dialog_simple" title="确定删除吗？" class="form-horizontal">
+
+ </div>
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(0)").addClass("active");
+
+
+        $("#btn_del").click(function () {
+            $('#dialog_simple').dialog('open');
+            return false;
+
+        });
+
+
+        $('#dialog_simple').dialog({
+            autoOpen: false,
+            width: 300,
+            buttons: {
+                "确定": function () {
+                    var self = this;
+
+                    $.ajax({
+                        url: '/admin/userdel',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ username: $("#UserName").val() }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data) {
+                            ShowMsg("删除成功", function () {
+                                location.href = "/admin/usermanager";
+                            });
+                            
+                           
+                        }
+                        else {
+                            ShowMsg("删除失败");
+                        }
+                    });
+
+                },
+                "取消": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+    })
+
+</script>

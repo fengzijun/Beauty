@@ -1,0 +1,61 @@
+﻿@{
+    if(ViewBag.IsAdmin)
+    {
+        Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+   
+}
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/images/slide-01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>美丽说网站功能1</h1>
+              <p class="lead">美丽说网站功能1 说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/slide-02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>美丽说网站功能2</h1>
+              <p class="lead">美丽说网站功能2 说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明.</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/slide-03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>美丽说网站功能3</h1>
+              <p class="lead">美丽说网站功能3 说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明.</p>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+<script>
+
+    !function ($) {
+        $(function () {
+          
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>

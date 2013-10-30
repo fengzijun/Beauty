@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Server Error";
+    if(@Model.ControllerName == "admin")
+    {
+        Layout = "~/Views/Shared/Admin_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+@using Utility = Beauty.Web.Helper
+<h2>Server Error</h2>
+
+<div class="n-errorpage">
+    <h2>
+        Sorry, an error occurred while processing your request.
+    </h2>
+    <p class="n-message">
+    </p>
+    <div class="n-detail">
+    </div>
+    <div class="n-controllername">
+        Controller Name: @Model.ControllerName</div>
+    <div class="n-actionname">
+        Action Name: @Model.ActionName</div>
+    <div class="n-detail">
+        <ul>
+            @Html.Raw(Utility.HtmlHelper.OutputException(Model.Exception))
+        </ul>
+    </div>
+</div>

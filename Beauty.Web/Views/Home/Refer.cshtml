@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Refer";
+}
+
+@Html.Partial("NavSub")
+@using (Html.BeginForm("UserEdit", "admin", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal margintop" }))
+{
+<div class="alert alert-block">
+    <h4>注意!</h4>
+    您美丽说分享宝的推广链接是:
+    <a href="@ViewBag.Domain/Account/Register?refer=@ViewBag.Username">@ViewBag.Domain/Account/Register?refer=@ViewBag.Username</a></div>
+}
+
+<script>
+    $(function () {
+
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(5)").addClass("active");
+
+        $("ul[class='nav nav-pills'] li:eq(4)").addClass("active");
+    })
+
+</script>

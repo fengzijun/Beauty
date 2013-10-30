@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "ProcessTrx";
+}
+
+@Html.Partial("NavSub")
+@using (Html.BeginForm("processtrx", "home", FormMethod.Post, new { @class = "form-horizontal margintop", target = "_Blank" }))
+{
+
+    @Html.ValidationSummary("", new { @class = "text-error" })
+     
+     <div class="control-group hidden">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("用户名", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBox("username", @User.Identity.Name)
+
+        </div>
+    </div>
+    <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("请选择套餐", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DropDownList("paylist",ViewBag.Paylist as IList<SelectListItem>)
+
+        </div>
+    </div>
+    <div class="control-group systemmoney">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("金额", new { @class = "control-label" })
+        <div class="controls" style=" margin-top:5px;">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+          <strong id="money" ></strong>
+
+        </div>
+    </div>
+     <div class="control-group custommoney">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("金额", new { @class = "control-label" })
+        <div class="controls">
+            <input type="text" id="inputmoney" placeholder="自定义金额至少200">
+           
+
+        </div>
+    </div>
+    <div class="hidden"><input name="type" id="type"  type="text" /><input type="text" id ="moneyhidden" name="moneyhidden" /></div>
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="确认订单" class="btn" id="submit" />
+   
+            </div>
+    </div>
+}
+
+
+<script>
+    $(function () {
+       
+
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(5)").addClass("active");
+
+        $("ul[class='nav nav-pills'] li:eq(2)").addClass("active");
+
+        $("#type").val($(this).find("option:selected").text());
+
+        $(".custommoney").hide();
+        $("#money").text($("#paylist").val());
+
+        var selecttext = $(this).find("option:selected").text();
+        if (selecttext == "自定义") {
+            $(".custommoney").show();
+            $(".systemmoney").hide();
+        }
+
+        $("#moneyhidden").val($("#paylist").val());
+
+        $("#paylist").change(function () {
+            var selecttext = $(this).find("option:selected").text();
+
+            $("#type").val(selecttext);
+            if (selecttext != "自定义") {
+                $("#moneyhidden").val($(this).val());
+                $("#money").text($("#paylist").val());
+                $(".custommoney").hide();
+                $(".systemmoney").show();
+            }
+            else {
+                $(".custommoney").show();
+                $(".systemmoney").hide();
+            }
+
+        })
+
+        $("form").submit(function () {
+
+            var selecttext = $(this).find("option:selected").text();
+            if (selecttext == "自定义") {
+                $("#moneyhidden").val(parseInt($("#inputmoney").val(), 10));
+                if (isNaN(parseInt($("#inputmoney").val(),10))) {
+                    ShowMsg("请输入正确的金额")
+                    return false;
+                }
+                if (parseInt($("#inputmoney").val()) < 200) {
+                    ShowMsg("自定义模式金额必须大于200")
+                    return false;
+                }
+            }
+           
+        })
+    })
+
+    
+
+</script>

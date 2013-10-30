@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7b0355c8-08ec-437b-bc51-27276e85e5d4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1262/BeautyService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BeautyService1.wsdl" MetadataType="Wsdl" ID="424ae305-d7fa-4214-963e-97a4e8b26df2" SourceId="1" SourceUrl="http://localhost:1262/BeautyService.svc?wsdl" />
+    <MetadataFile FileName="BeautyService3.xsd" MetadataType="Schema" ID="6b9f49fe-5bfc-4f34-a60d-ad76b8d3a65c" SourceId="1" SourceUrl="http://localhost:1262/BeautyService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BeautyService31.xsd" MetadataType="Schema" ID="ecd8733d-9b3d-4c98-8954-d47c8b83a782" SourceId="1" SourceUrl="http://localhost:1262/BeautyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BeautyService1.disco" MetadataType="Disco" ID="4b5c93ea-5619-4cba-84d2-7c7de91e8faf" SourceId="1" SourceUrl="http://localhost:1262/BeautyService.svc?disco" />
+    <MetadataFile FileName="BeautyService32.xsd" MetadataType="Schema" ID="d9a38a75-a8bc-4110-a3de-c17311076a98" SourceId="1" SourceUrl="http://localhost:1262/BeautyService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,303 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.UserStore>
+@using Beauty.Web.Page
+@{
+    
+}
+
+<style>
+
+    td input[type='checkbox'] {
+        margin-top:0px;
+        margin-left:5px;
+    }
+</style>
+ <div class="alert alert-block">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>提示</h4>
+    <p>首页直达功能只会显示在美丽说被收录分类的宝贝！</p>
+    </div>
+<table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">商品列表</th>
+                <th class="centerandmiddle">目录</th>
+                <th class="centerandmiddle">预计消费积分</th>
+                <th class="centerandmiddle">评论</th>
+                <th class="centerandmiddle">操作</th><span style="background-position:-96px -128px"></span>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+
+                var sroce = Model[i].needlike * (int)ViewBag.likeprice + Model[i].needrecord * (int)ViewBag.recordprice + Model[i].needcommment * (int)ViewBag.commentprice + Model[i].needliked * (int)ViewBag.likedprice + Model[i].needsuper * (int)ViewBag.supperrecordprice;
+                var RMB = (decimal)sroce / ViewBag.pricerate;
+                var commenthtml = "";
+                if (Model[i].Like != null)
+                {
+
+                    if (!string.IsNullOrEmpty(Model[i].Like.Comment))
+                    {
+                        string[] comments = Model[i].Like.Comment.ToString().Split(new string[] { "###" }, StringSplitOptions.None);
+
+                        foreach (var comment in comments)
+                        {
+                            commenthtml += "<div><strong style='width:30px;'>评论：</strong><input type='text' value='" + comment + "' name='comment_1'  id ='comment_1' style='display:inline-block;width:150px' /></div>";
+
+                        }
+                        if (string.IsNullOrEmpty(commenthtml))
+                        {
+                            commenthtml = "<div><strong style='width:30px;'>评论：</strong><input type='text'  name='comment_1'  id ='comment_1' style='display:inline-block;width:150px' /></div>";
+                        }
+                    }
+                    else
+                    {
+                        commenthtml = "<div><strong style='width:30px;'>评论：</strong><input type='text'  name='comment_1'  id ='comment_1' style='display:inline-block;width:150px' /></div>";
+                    }
+                }
+                else
+                {
+                    commenthtml = "<div><strong style='width:30px;'>评论：</strong><input type='text'  name='comment_1'  id ='comment_1' style='display:inline-block;width:150px' /></div>";
+                }
+                 <tr>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)  
+                        @Html.TextBoxFor(m => m[i].needliked)   
+                        @Html.TextBoxFor(m => m[i].needlike)   
+                        @Html.TextBoxFor(m => m[i].needcommment)   
+
+                        @Html.TextBoxFor(m => m[i].Username)  
+                        @Html.TextBoxFor(m => m[i].needrecord)
+                        @Html.TextBoxFor(m => m[i].Bady.ID)
+                        @Html.TextBoxFor(m => m[i].needsuper)   
+                    </td>
+                                     <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].Bady.ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;">@Model[i].Bady.Badydescription</div></div> </td>
+                    <td class="centerandmiddle">@Model[i].Type</td>
+                    <td class="centerandmiddle">@sroce (@RMB 元)</td>    
+                    <td class="centerandmiddle" style=" width:220px;">@Html.Raw(@commenthtml) <div class="pull-right"><a  class="btn addcomment"  >添加评论</a></div></td>
+                    <td class="centerandmiddle" style=" width:250px;"><input type="checkbox" checked ="checked" name="checkbox_1"/>标准 <input type="checkbox" name="checkbox_2"/>1.5倍<input type="checkbox" name="checkbox_3"/>2倍 <input type="text" class="small inputnum" name="inputnum"/>倍 
+                        @if(Model[i].taskstatus == null || Model[i].taskstatus == 2)
+                        {
+                           <a class="btn btnstart">开始</a><a class="btn btnstop">停止</a>
+                        }
+                        else if (Model[i].taskstatus == 0 || Model[i].taskstatus == 1)
+                        {
+                            <a class="btn btnstart disabled">正在运行</a><a class="btn btnstop">停止</a>
+                        }
+                        else
+                        {
+                             <a class="btn btnstart">开始</a><a class="btn btnstop disabled">已经停止</a>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+  <div class="pagination">
+
+        @Html.Pager(Model)
+     
+    </div>
+<script>
+    var likeprice = '@ViewBag.likeprice';
+    var likedprice = '@ViewBag.likedprice';
+    var commentprice = '@ViewBag.commentprice';
+    var recordprice = '@ViewBag.recordprice';
+    var pricerate = '@ViewBag.pricerate';
+    var supperrecordprice = '@ViewBag.supperrecordprice';
+
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(4)").addClass("active");
+
+
+        $(".addcomment").click(function () {
+            var html = '<div><strong style=" width:30px;">评论：</strong><input type="text" name="comment_1"  id ="comment_1" style="display:inline-block;width:150px" /></div>';
+            $(html).insertBefore($(this).parent());
+        })
+
+        $("td input[type='checkbox']").each(function () {
+            $(this).change(function () {
+                var isselect = false;
+                if ($(this).attr("checked") == "checked") {
+                    isselect = true;
+                    $(this).parent().find(".inputnum").val("");
+
+                    var needrecord = $(this).parent().parent().find("td:eq(0)").find("input[name*='needrecord']").val();
+                    var needliked = $(this).parent().parent().find("td:eq(0)").find("input[name*='needliked']").val();
+                    var needlike = $(this).parent().parent().find("td:eq(0)").find("input:eq(2)").val();
+                    var needcommment = $(this).parent().parent().find("td:eq(0)").find("input[name*='needcommment']").val();
+                    var needsuper = $(this).parent().parent().find("td:eq(0)").find("input[name*='needsuper']").val();
+ 
+                    if ($(this).attr("name") == "checkbox_1") {
+                   
+                        var sroce = (needrecord * recordprice + needliked * likedprice + needlike * likeprice + needcommment * commentprice + needsuper * supperrecordprice).toFixed(2);
+                   
+                        var rmb = "(" + (sroce / pricerate).toFixed(2) + " 元) ";
+                        $(this).parent().parent().find("td:eq(3)").text(sroce + rmb);
+                    }
+                    else if ($(this).attr("name") == "checkbox_2") {
+        
+                        var sroce = (needrecord * recordprice * 1.5 + needliked * likedprice * 1.5 + needlike * likeprice * 1.5 + needcommment * commentprice * 1.5+ needsuper * supperrecordprice*1.5).toFixed(2);
+                        var rmb = "(" + (sroce / pricerate).toFixed(2) + " 元) ";
+                        $(this).parent().parent().find("td:eq(3)").text(sroce + rmb);
+                    }
+                    else {
+    
+                        var sroce = (needrecord * recordprice * 2 + needliked * likedprice * 2 + needlike * likeprice * 2 + needcommment * commentprice * 2 + needsuper * supperrecordprice * 2).toFixed(2);
+                        var rmb = "(" + (sroce / pricerate).toFixed(2) + " 元) ";
+                        $(this).parent().parent().find("td:eq(3)").text(sroce + rmb);
+                    }
+                }
+                else {
+                    isselect = false;
+                }
+                $(this).parent().find("input[type='checkbox']").attr("checked", false);
+                
+                $(this).attr("checked", isselect);
+            });
+
+        })
+
+        $(".inputnum").keyup(function () {
+            if ($(this).val() != "") {
+                $(this).parent().find("input[type='checkbox']").attr("checked", false);
+            }
+            
+            if (parseFloat($(this).val()) != NaN) {
+                var needrecord = $(this).parent().parent().find("td:eq(0)").find("input[name*='needrecord']").val();
+                var needliked = $(this).parent().parent().find("td:eq(0)").find("input[name*='needliked']").val();
+                var needlike = $(this).parent().parent().find("td:eq(0)").find("input:eq(2)").val();
+                var needsuper = $(this).parent().parent().find("td:eq(0)").find("input[name*='needsuper']").val();
+                var needcommment = $(this).parent().parent().find("td:eq(0)").find("input[name*='needcommment']").val();
+
+                var sroce = (needrecord * recordprice * parseFloat($(this).val()) + needliked * likedprice * parseFloat($(this).val()) + needlike * likeprice * parseFloat($(this).val()) + needcommment * commentprice * parseFloat($(this).val()) + needsuper * supperrecordprice * parseFloat($(this).val())).toFixed(2);
+
+                var rmb = "(" + (sroce / pricerate).toFixed(2) + " 元) ";
+                $(this).parent().parent().find("td:eq(3)").text(sroce + rmb);
+            }
+            else {
+                $(this).parent().parent().find("td:eq(3)").text(0 + "(0 元)");
+            }
+        })
+
+        $(".btnstart").click(function () {
+            if ($(this).attr("class").indexOf("disabled") > -1) {
+                return false;
+            }
+
+            var comment = "";
+            $(this).parent().parent().find("td:eq(4)").find("input[name*='comment']").each(function () {
+                if ($(this).val() != "" && $(this).val() != null && $(this).val() != undefined) {
+                    comment += $(this).val() + "###";
+                }
+            });
+            if (comment.indexOf("###") > -1) {
+                comment = comment.substr(0, comment.length - 3);
+            }
+
+            var data = {};
+            var ID = $(this).parent().parent().find("td:eq(0)").find("input[name*='ID']").val();
+            var BadyId = $(this).parent().parent().find("td:eq(0)").find("input[name*='Bady.ID']").val();
+            var temp;
+            if ($(this).parent().parent().find("td:eq(5)").find("input[class*='inputnum']").val() != "") {
+                temp = parseFloat($(this).parent().parent().find("td:eq(5)").find("input[class*='inputnum']").val());
+                if (!temp) {
+                    ShowMsg("请输入大于零的数字");
+                    return false;
+                }
+
+               
+               
+            }
+            else if ($(this).parent().parent().find("td:eq(5)").find("input[name*='checkbox_1']").attr("checked") == "checked") {
+                temp = 1;
+            }
+            else if ($(this).parent().parent().find("td:eq(5)").find("input[name*='checkbox_2']").attr("checked") == "checked") {
+                temp = 1.5;
+            }
+            else {
+                temp = 2;
+            }
+
+            var needrecord = $(this).parent().parent().find("td:eq(0)").find("input[name*='needrecord']").val();
+            var needliked = $(this).parent().parent().find("td:eq(0)").find("input[name*='needliked']").val();
+            var needlike = $(this).parent().parent().find("td:eq(0)").find("input:eq(2)").val();
+            var needcommment = $(this).parent().parent().find("td:eq(0)").find("input[name*='needcommment']").val();
+            var needsuper = $(this).parent().parent().find("td:eq(0)").find("input[name*='needsuper']").val();
+            data.ID = ID;
+            data.Bady = {};
+            data.Bady.ID = BadyId;
+            data.needrecord = needrecord * temp;
+            data.needliked = needliked * temp;
+            data.needlike = needlike * temp;
+            data.needcommment = needcommment * temp;
+            data.needsuper = needsuper * temp;
+            data.msg = comment;
+         
+            $.ajax({
+                url: '/SuperAssert/PostLike',
+                type: 'POST',
+                dataType: 'json',
+                data: $.toJSON({ data: data }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+                }
+            }).done(function (data) {
+                if (data.Result) {
+                    ShowMsg(data.Msg, function () {
+                        location.href = location.href;
+                    });
+                    //$(self).dialog("close");
+                   
+                }
+                else {
+                    ShowMsg(data.Msg);
+                }
+            });
+
+        })
+
+        $(".btnstop").click(function () {
+            if ($(this).attr("class").indexOf("disabled") > -1) {
+                return false;
+            }
+
+            var data = {};
+            var ID = $(this).parent().parent().find("td:eq(0)").find("input[name*='ID']").val();
+            var BadyId = $(this).parent().parent().find("td:eq(0)").find("input[name*='Bady.ID']").val();
+
+            data.ID = ID;
+            data.Bady = {};
+            data.Bady.ID = BadyId;
+
+            $.ajax({
+                url: '/SuperAssert/PostLikeStop',
+                type: 'POST',
+                dataType: 'json',
+                data: $.toJSON({ data: data }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+                }
+            }).done(function (data) {
+                if (data.Result) {
+                    ShowMsg(data.Msg, function () {
+                        location.href = location.href;
+                    });
+                    //$(self).dialog("close");
+                    
+                }
+                else {
+                    ShowMsg(data.Msg);
+                }
+            });
+        })
+    })
+
+</script>
+

@@ -1,0 +1,17 @@
+D:\MyProjects\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.dll
+D:\MyProjects\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.pdb
+D:\MyProjects\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.dll
+D:\MyProjects\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web(1)\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web(1)\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web(1)\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Beauty.Web(1)\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web(1)\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web2\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web2\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web2\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web2\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\bin\Debug\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\obj\Debug\Beauty.Core.pdb

@@ -1,0 +1,4 @@
+2013/9/17 23:21:12----------未能加载文件或程序集“ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=null”或它的某一个依赖项。系统找不到指定的文件。
+2013/9/17 23:21:12----------Beauty.Update
+2013/9/17 23:21:12----------   在 Beauty.Update.Form1.UnZipFile(String zipFilePath)
+   在 Beauty.Update.Form1.Form1_Load(Object sender, EventArgs e)

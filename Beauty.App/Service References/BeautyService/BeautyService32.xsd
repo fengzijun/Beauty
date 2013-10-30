@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Beauty.Api.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Beauty.Api.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1262/BeautyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="BoolResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BoolResponse" nillable="true" type="tns:BoolResponse" />
+  <xs:complexType name="BaseWebData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseWebData" nillable="true" type="tns:BaseWebData" />
+  <xs:complexType name="ArrayOfWebSettingGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WebSettingGroup" nillable="true" type="tns:WebSettingGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWebSettingGroup" nillable="true" type="tns:ArrayOfWebSettingGroup" />
+  <xs:complexType name="WebSettingGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="settings" nillable="true" type="tns:ArrayOfWebSetting" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WebSettingGroup" nillable="true" type="tns:WebSettingGroup" />
+  <xs:complexType name="ArrayOfWebSetting">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WebSetting" nillable="true" type="tns:WebSetting" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWebSetting" nillable="true" type="tns:ArrayOfWebSetting" />
+  <xs:complexType name="WebSetting">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebSetting" nillable="true" type="tns:WebSetting" />
+  <xs:complexType name="BaseWebEntityOfguid">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BaseWebEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Beauty.Api.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="guid" Namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Createby" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Createtime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Statues" type="xs:int" />
+      <xs:element minOccurs="0" name="Updateby" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Updatetime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseWebEntityOfguid" nillable="true" type="tns:BaseWebEntityOfguid" />
+  <xs:complexType name="ArrayOfWebTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WebTask" nillable="true" type="tns:WebTask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWebTask" nillable="true" type="tns:ArrayOfWebTask" />
+  <xs:complexType name="WebTask">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Autoflag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAuto" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Runstatues" type="xs:int" />
+          <xs:element minOccurs="0" name="TaskType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Taskid" type="ser:guid" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebTask" nillable="true" type="tns:WebTask" />
+  <xs:complexType name="WebShare">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bady" nillable="true" type="tns:WebBady" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuper" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Liked" type="xs:int" />
+          <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Runstatues" type="xs:int" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebShare" nillable="true" type="tns:WebShare" />
+  <xs:complexType name="WebBady">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BadyId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Badydescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Badyname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Groupid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Platfrom" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Twitterid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebBady" nillable="true" type="tns:WebBady" />
+  <xs:complexType name="WebGroup">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebGroup" nillable="true" type="tns:WebGroup" />
+  <xs:complexType name="BaseWebEntityOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BaseWebEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Beauty.Api.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Createby" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Createtime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Statues" type="xs:int" />
+      <xs:element minOccurs="0" name="Updateby" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Updatetime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseWebEntityOfstring" nillable="true" type="tns:BaseWebEntityOfstring" />
+  <xs:complexType name="WebLike">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bady" nillable="true" type="tns:WebBady" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Commentnum" type="xs:int" />
+          <xs:element minOccurs="0" name="Likednum" type="xs:int" />
+          <xs:element minOccurs="0" name="Likenum" type="xs:int" />
+          <xs:element minOccurs="0" name="Lnk" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Recordnum" type="xs:int" />
+          <xs:element minOccurs="0" name="Runstatues" type="xs:int" />
+          <xs:element minOccurs="0" name="Supernum" type="xs:int" />
+          <xs:element minOccurs="0" name="Type" type="xs:int" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebLike" nillable="true" type="tns:WebLike" />
+  <xs:complexType name="WebUser">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Card" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FreezePoint" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Ip" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsLogin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Point" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Province" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QQ" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Refer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShopAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZFB" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebUser" nillable="true" type="tns:WebUser" />
+  <xs:complexType name="ArrayOfWebNotice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WebNotice" nillable="true" type="tns:WebNotice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWebNotice" nillable="true" type="tns:ArrayOfWebNotice" />
+  <xs:complexType name="WebNotice">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseWebEntityOfguid">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" type="xs:int" />
+          <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebNotice" nillable="true" type="tns:WebNotice" />
+</xs:schema>

@@ -1,0 +1,58 @@
+﻿@model Beauty.Web.Models.WebPrice
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Pricecreate", "admin", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   
+    @Html.ValidationSummary("", new { @class = "text-error" })
+  
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Pricename, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Pricename)
+
+        </div>
+    </div>
+    <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Price, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Price)
+
+        </div>
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.PromotionPrice, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.PromotionPrice)
+
+        </div>
+    </div>
+   
+   
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="保存" class="btn" /> <a class="btn" href="/admin/pricesetting">返回</a>
+            </div>
+    </div>
+}
+
+
+<script>
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(2)").addClass("active");
+
+        })
+    })
+</script>

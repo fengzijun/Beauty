@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Model\bin\Release\Beauty.Model.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Model\bin\Release\Beauty.Model.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Model\obj\Release\Beauty.Model.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Model\obj\Release\Beauty.Model.pdb

@@ -1,0 +1,23 @@
+﻿@model Beauty.Model.Help
+@{
+    ViewBag.Title = "help";
+}
+
+
+<div style="float:left; margin-top:20px; width:100%;">
+    @if(@Model!=null ){
+       @Html.Raw(@Model.msgcontent)
+    }
+</div>
+
+
+<script>
+    $(function () {
+
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(6)").addClass("active");
+
+      
+    })
+
+</script>

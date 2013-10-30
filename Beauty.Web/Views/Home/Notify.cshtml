@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Notify";
+}
+
+@if (ViewBag.Type == "OK")
+{
+    <div class="alert alert-success">交易成功</div>
+}
+else
+{
+    <div class="alert alert-error">交易发生异常</div>
+}

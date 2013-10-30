@@ -1,0 +1,56 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.BeautyPrice>
+@using Beauty.Web.Page
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+  <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+              
+                <th class="centerandmiddle">价格名称</th>
+                <th class="centerandmiddle">原价</th>
+                <th class="centerandmiddle">促销价</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                  
+                    <td class="centerandmiddle"><a href="/admin/priceedit?id=@Model[i].ID">@Model[i].Pricename</a>  </td>
+                    <td class="centerandmiddle">
+                      @Model[i].Price
+                    </td>
+                    <td class="centerandmiddle">@Model[i].PromotionPrice</td>
+                 
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+          <div class="pull-right">
+          
+             @Html.ActionLink("创建", "pricecreate", "admin", null, new {@class="btn" })
+        </div>
+    </div>
+    
+
+<script>
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(2)").addClass("active");
+
+        })
+    })
+</script>
+
+

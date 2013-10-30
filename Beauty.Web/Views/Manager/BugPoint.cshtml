@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "RequestMoneyAdd";
+}
+
+@Html.Partial("NavSub")
+@using (Html.BeginForm("BugPoint", "manager", FormMethod.Post, new { @class = "form-horizontal margintop" }))
+{
+
+    @Html.ValidationSummary("", new { @class = "text-error" })
+     
+    
+  
+    <div class="control-group systemmoney">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("积分", new { @class = "control-label" })
+        <div class="controls" >
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+          @Html.TextBox("point")
+
+        </div>
+    </div>
+   
+   
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="确认" class="btn" id="submit" />
+   
+            </div>
+    </div>
+}
+
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(5)").addClass("active");
+
+    
+        $("ul[class='nav nav-pills'] li:eq(7)").addClass("active");
+
+       
+    })
+
+
+</script>

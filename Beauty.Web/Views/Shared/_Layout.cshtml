@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>美丽说分享宝</title>
+    @*    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/js")*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/themes/base/bootstrap.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/themes/base/jquery-ui-1.10.0.custom.css")">
+ @*   <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/jquery.ui.all.css")">
+     <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/jquery.ui.css")">*@
+
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery-1.8.2.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery-ui.1.8.2-max.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("/Scripts/jquery-ui-1.8.20.min2.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery.validate.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery.validate.unobtrusive.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/html5.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/g.js")"></script>
+    <!--[if lte IE 6]>
+      <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/themes/base/bootstrap-ie6.css")">
+      <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/themes/base/ie.css")">
+
+      <![endif]-->
+
+    <!--[if lte IE 6]>
+
+    <script type="text/javascript" src="@Url.Content("/Scripts/bootstrap-ie.js")"></script>
+
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/site.css")">
+    <script>
+        var domain = '@ViewBag.Domain';
+
+    </script>
+    <style>
+        .ui-dialog {
+    position:absolute;
+}
+        </style>
+</head>
+<body oncontextmenu="return false">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+
+
+                <div>
+                    <ul class="nav">
+                        <li class="active"><a href="/share/index">发起分享</a></li>
+                        <li><a href="/like/index">发起喜欢</a></li>
+                        <li><a href="/home/rank">查排名</a></li>
+                        <li><a href="/superassert/WaitShare">超级主编助手</a></li>
+                        <li><a href="/superassert/GotoFirst">首页直达</a></li>
+                        <li><a href="/manager/UserSetting">系统设置</a></li>
+                        <li><a href="/home/help">使用帮助</a></li>
+                    </ul>
+                    <div class="navbar-form pull-right">
+                        @*                   <input class="span2" type="text" placeholder="Email">
+                        <input class="span2" type="password" placeholder="Password">
+                        <button type="submit" class="btn">Sign in</button>*@
+                       @* @Html.Partial("_LoginPartial")*@
+                    </div>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container page">
+
+
+        @RenderBody()
+        <div class="control-group">
+            <div class="controls">
+                @Html.Partial("_CrossActionMsg")
+            </div>
+        </div>
+    </div>
+    <div id="dialog-message" title="提示">
+    </div>
+    <div id="confirm-dialog-message" title="提示">
+    </div>
+    <footer>
+    </footer>
+
+
+
+
+</body>
+
+
+</html>

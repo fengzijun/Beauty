@@ -1,0 +1,11 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Service.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Service.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.InterFace.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Model.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.InterFace.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\bin\Release\Beauty.Model.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\obj\Release\Beauty.Service.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\obj\Release\Beauty.Service.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Service\obj\Release\Beauty.Service.pdb

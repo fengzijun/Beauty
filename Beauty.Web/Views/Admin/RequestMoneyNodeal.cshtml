@@ -1,0 +1,121 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.RequstMoney>
+@using Beauty.Web.Page
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+  <ul class="nav nav-pills">
+       <li class="active" >
+        <a href="/admin/RequestMoneyNodeal">未处理</a>
+      </li>
+      <li ><a href="/admin/RequestMoneydeal">已处理</a></li>
+    
+    </ul>
+<table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">用户名</th>
+                <th class="centerandmiddle">用户余额</th>
+                <th class="centerandmiddle">提现金额</th>
+                <th class="centerandmiddle">时间</th>
+                <th class="centerandmiddle">失败原因</th>
+                <th class="centerandmiddle">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)   
+                    </td>
+                    <td class="centerandmiddle">@Model[i].Username  </td>
+                    <td class="centerandmiddle">
+                      @Model[i].user.Balance
+                    </td>
+                    <td class="centerandmiddle">@Model[i].Money</td>
+                    <td class="centerandmiddle">@Model[i].Createtime</td>
+                    <td class="centerandmiddle">@Html.TextArea("msg",new {rows=5})</td>
+                    <td class="centerandmiddle"><a class="btn suc" id="sucbtn">提现成功</a><a class="btn fail" id="failbtn">提现失败</a></td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+          
+    </div>
+    
+<script>
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(4)").addClass("active");
+
+            
+
+        })
+
+        $("a[class='btn suc']").each(function () {
+
+            $(this).click(function () {
+                var id = $(this).parent().parent().find("td:eq(0)").find("input[name*='ID']").val();
+
+                $.ajax({
+                    url: '/admin/RequestMoneyNodeal',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $.toJSON({ id: id, msg: '提现成功'}),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    }
+                }).done(function (data) {
+                    if (data.Result) {
+                        ShowMsg(data.Msg, function () {
+                            location.href = location.href;
+                        });
+
+                    }
+                    else {
+                        ShowMsg(data.Msg);
+                    }
+                });
+            })
+        })
+
+        $("a[class='btn fail']").each(function () {
+
+            $(this).click(function () {
+                var id = $(this).parent().parent().find("td:eq(0)").find("input[name*='ID']").val();
+                var msg = $(this).parent().parent().find("td:eq(5)").find("textarea[name*='msg']").val();
+                $.ajax({
+                    url: '/admin/RequestMoneyNodeal',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $.toJSON({ id: id, msg: '提现失败:' + msg }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    }
+                }).done(function (data) {
+                    if (data.Result) {
+                        ShowMsg(data.Msg, function () {
+                            location.href = location.href;
+                        });
+
+                    }
+                    else {
+                        ShowMsg(data.Msg);
+                    }
+                });
+            })
+        })
+    })
+</script>

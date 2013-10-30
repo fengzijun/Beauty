@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BeautyService.svc">
+      <publishTime>08/29/2013 15:07:46</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>11/06/2012 16:35:47</publishTime>
+    </File>
+    <File Include="bin/Beauty.Api.dll">
+      <publishTime>10/28/2013 10:31:19</publishTime>
+    </File>
+    <File Include="bin/Beauty.Api.pdb">
+      <publishTime>10/28/2013 10:31:19</publishTime>
+    </File>
+    <File Include="bin/Beauty.Common.dll">
+      <publishTime>10/27/2013 21:00:00</publishTime>
+    </File>
+    <File Include="bin/Beauty.Common.pdb">
+      <publishTime>10/27/2013 21:00:00</publishTime>
+    </File>
+    <File Include="bin/Beauty.Core.dll">
+      <publishTime>10/27/2013 21:00:00</publishTime>
+    </File>
+    <File Include="bin/Beauty.Core.pdb">
+      <publishTime>10/27/2013 21:00:00</publishTime>
+    </File>
+    <File Include="bin/Beauty.InterFace.dll">
+      <publishTime>10/27/2013 21:17:47</publishTime>
+    </File>
+    <File Include="bin/Beauty.InterFace.pdb">
+      <publishTime>10/27/2013 21:17:47</publishTime>
+    </File>
+    <File Include="bin/Beauty.Model.dll">
+      <publishTime>10/27/2013 21:17:47</publishTime>
+    </File>
+    <File Include="bin/Beauty.Model.pdb">
+      <publishTime>10/27/2013 21:17:47</publishTime>
+    </File>
+    <File Include="bin/Beauty.Service.dll">
+      <publishTime>10/27/2013 21:19:14</publishTime>
+    </File>
+    <File Include="bin/Beauty.Service.pdb">
+      <publishTime>10/27/2013 21:19:14</publishTime>
+    </File>
+    <File Include="bin/Castle.Core.dll">
+      <publishTime>08/26/2013 09:17:13</publishTime>
+    </File>
+    <File Include="bin/Castle.Windsor.dll">
+      <publishTime>08/26/2013 09:17:00</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>08/06/2012 21:30:08</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/29/2013 15:07:46</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/28/2013 10:49:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

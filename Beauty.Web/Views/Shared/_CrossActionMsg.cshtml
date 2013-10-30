@@ -1,0 +1,24 @@
+﻿@if (TempData["proccessingmsg"] != null)
+{
+    Dictionary<string, string> msgs = TempData["proccessingmsg"] as Dictionary<string, string>;
+  
+        <ul>
+            @if (msgs["OK"]!=null)
+            {
+                <li class="text-success">
+                    @msgs["OK"]
+                </li>
+            }
+            else if (msgs["Fail"]!=null)
+            {
+                <li class="text-error">
+                    @msgs["Fail"]
+                </li>
+            }
+        </ul>
+        <script type="text/javascript">
+            ScrollToBottom();
+    
+        </script>
+  
+}

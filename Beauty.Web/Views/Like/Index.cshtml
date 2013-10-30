@@ -1,0 +1,373 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.Share>
+@using Beauty.Web.Page
+
+@{
+   
+}
+
+<style>
+
+
+</style>
+
+@using (Html.BeginForm("PostShare", "Share", FormMethod.Post, new {id="shareform" }))
+{
+   <ul class="nav nav-pills">
+      <li class="active">
+        <a href="/like/index">未喜欢</a>
+      </li>
+      <li><a href="/like/liking">正在喜欢</a></li>
+      <li><a href="/like/hasliked">已喜欢</a></li>
+
+    </ul>
+    <div style=" float:right;margin: 6px 0 0;"><span style="color:#fe2776; font-weight:bold; font-size:16px;">喜欢：收录杂志：粉丝：评论 = </span><input type="text" class="small" value="@ViewBag.likerate" id="likesetting" /><span>：</span><input type="text" value="@ViewBag.recordrate" id="recordsetting" class="small" /><span>：</span><input type="text" value="@ViewBag.likedrate" id="likedsetting" class="small"/><span>：</span><input value="@ViewBag.commentrate" class="small" type="text" id="commentsetting" /><span>&nbsp;&nbsp;</span><a class="btn" style="margin-bottom:10px;" id="savesetting">保存</a></div>
+        <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="centerandmiddle"></th>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">商品列表</th>
+                <th class="centerandmiddle">喜欢设置</th>
+                <th class="centerandmiddle">超级主编</th>
+                <th class="centerandmiddle">评论</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="centerandmiddle">@Html.CheckBox(@Model[i].Bady.ID.ToString(), new { id = @Model[i].Bady.ID.ToString() })</td>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)
+                        @Html.TextBoxFor(m => m[i].Bady.ID)   
+                        @Html.TextBoxFor(m => m[i].Username)   
+                    </td>
+                  <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].Bady.ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;"> <a href="http://www.meilishuo.com/share/@Model[i].Bady.Twitterid" target="_blank">@Model[i].Bady.Badydescription</a></div></div> </td>
+                    <td class="centerandmiddle"> <input type="text" name ="_Like" class="small"/></td>
+                    <td class="centerandmiddle"><input type="text" name ="_supernum" class="small"/></td>
+                    <td class="centerandmiddle" style=" width:400px;"><div ><strong style=" width:30px;">评论：</strong><input type="text" name="comment_1" id ="comment_1" style=" display:inline-block;width:340px;" /> </div> <div class="pull-right"><a class="btn addcomment"  >添加评论</a></div></td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+        <div class="pull-right">
+             <input type="button" value="已有链接？" class="btn" id="dialog_link" />
+            <input type="button" value="一键喜欢" class="btn" id="submit" />
+             <input type="button" value="删除" class="btn" id="submitdelete" />
+        </div>
+    </div>
+    
+
+}
+
+ <div id="dialog_simple" title="添加美丽说分享链接" class="form-horizontal">
+     
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+         @Html.Label("链接", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBox("LinkText", null, new { id = "LinkText" })
+          
+        </div>
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+         @Html.Label("喜欢数量", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBox("LinkText_likenum", null, new { id = "LinkText_likenum" })
+          
+        </div>
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+         @Html.Label("超级主编", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBox("LinkText_supernum", null, new { id = "LinkText_supernum" })
+          
+        </div>
+    </div>
+     <div class="control-group">
+       
+         @Html.Label("关键字", new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBox("LinkText_keword", null, new { @class = "LinkText_keword" })
+          
+        </div>
+    </div>
+    <div class="control-group">
+       
+         @Html.Label("评论", new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBox("LinkText_comment",null, new {@class = "LinkText_comment" })
+          
+        </div>
+    </div>
+ </div>
+
+<script>
+   
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(1)").addClass("active");
+
+        $("#savesetting").click(function () {
+            $.ajax({
+                url: '/like/Usersetting',
+                type: 'POST',
+                dataType: 'json',
+                data: $.toJSON({ likerate: $("#likesetting").val(), recordrate: $("#recordsetting").val(), likedrate: $("#likedsetting").val(), commentrate: $("#commentsetting").val() }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+                }
+            }).done(function (data) {
+                if (data) {
+                    ShowMsg("保存成功");
+                   
+                }
+                else {
+                    ShowMsg("保存失败");
+                }
+            });
+        })
+
+        $('#dialog_simple').dialog({
+            autoOpen: false,
+            width: 600,
+
+            buttons: {
+                "添加评论": function () {
+                    var html = '<div class="control-group"><label for="" class="control-label">评论</label><div class="controls"><input type="text" value="" name="LinkText_comment"   id="LinkText_comment" class="LinkText_comment"></div></div>'
+                    $(html).appendTo($(this));
+                },
+                "喜欢": function () {
+                    var self = this;
+                    if ($("#LinkText").val().toLowerCase().indexOf("http://www.meilishuo.com/share") <0 ) {
+                        ShowMsg("链接无效，请输入美丽说链接");
+                        return;
+                    }
+                    var data = new Array();
+                    var Lnk = $("#LinkText").val();
+                    var Like;
+                    var Supernum;
+                    var comment = "";
+                    var keyword = "";
+                    
+                    if ($("#LinkText_likenum").val() == null && $("#LinkText_likenum").val() == "") {
+                        Like = 0;
+                    }
+                    else {
+                        Like = $("#LinkText_likenum").val();
+                    }
+
+                    if ($("#LinkText_supernum").val() == null && $("#LinkText_supernum").val() == "") {
+                        Supernum = 0;
+                    }
+                    else {
+                        Supernum = $("#LinkText_supernum").val();
+                    }
+
+                    keyword = $("#LinkText_keword").val();
+                    
+                    $(this).find("input[name*='comment']").each(function () {
+                        if ($(this).val() != "" && $(this).val() != null && $(this).val()!=undefined) {
+                            comment += $(this).val() + "###";
+                        }
+                    });
+                    if (comment.indexOf("###") > -1) {
+                        comment = comment.substr(0, comment.length - 3);
+                    }
+                    
+                    if (comment.length == 0) {
+                        ShowMsg("请填写评论");
+                        return;
+                    }
+
+                    if (keyword.length == 0) {
+                        ShowMsg("请填写填写关键字");
+                        return;
+                    }
+
+                    var temp = {};
+                    temp.Supernum = Supernum;
+                    temp.Comment = comment;
+                    temp.Likenum = Like;
+                    temp.Lnk = Lnk;
+                    temp.keyword = keyword;
+                    data.push(temp);
+
+                    $.ajax({
+                        url: '/like/postlike',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ data: data }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data.Result) {
+                            ShowMsg(data.Msg);
+                            $(self).dialog("close");
+                        }
+                        else {
+                            ShowMsg(data.Msg);
+                        }
+                    });
+                   
+                },
+                "取消": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $('#dialog_link').click(function () {
+            $("#dialog_simple .control-group").each(function (i) {
+                if (i > 4) {
+                    $(this).remove();
+                }
+            })
+            $('#dialog_simple').dialog('open');
+            return false;
+        });
+
+        $(".addcomment").click(function () {
+            var html = '<div><strong style=" width:30px;">评论：</strong><input type="text" name="comment_1"  id ="comment_1" style="display:inline-block;width:340px;" /></div>';
+            $(html).insertBefore($(this).parent());
+        })
+
+        $("#submit").click(function () {
+            var data = new Array();
+            var isselect = false;
+            $("tr").each(function (index) {
+
+                var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                if (ischeck == "checked") {
+                    var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+
+                    var Username = $(this).find("td:eq(1)").find("input[name*='Username']").val();
+                    var Like = $(this).find("td:eq(3)").find("input[name*='Like']").val();
+                    var Supernum = $(this).find("td:eq(4)").find("input[name*='supernum']").val();
+                    var comment = "";
+                    $(this).find("td:eq(5)").find("input[name*='comment']").each(function () {
+                        if ($(this).val() != "" && $(this).val() != null && $(this).val() != undefined) {
+                            comment += $(this).val() + "###";
+                        }
+                    });
+                    if (comment.indexOf("###") > -1) {
+                        comment = comment.substr(0, comment.length - 3);
+                    }
+
+
+                    var temp = {};
+                    temp.Bady = {};
+                    temp.Bady.ID = ID;
+                    temp.Username = Username;
+                    if (Like == null || Like == "" || Like == undefined) {
+                        temp.Likenum = 0;
+                    }
+                    else {
+                        temp.Likenum = Like;
+                    }
+
+                    if (Supernum == null || Supernum == "" || Supernum == undefined) {
+                        temp.Supernum = 0;
+                    }
+                    else {
+                        temp.Supernum = Supernum;
+                    }
+                  
+                    temp.Comment = comment;
+                  
+                    data.push(temp);
+
+                    isselect = true;
+                }
+            })
+
+            if (isselect) {
+                $.ajax({
+                    url: '/like/postlike',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $.toJSON({ data: data }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    }
+                }).done(function (data) {
+                    if (data.Result) {
+                        ShowMsg(data.Msg, function () {
+                            location.href = location.href;
+                        });
+                    }
+                    else {
+                        ShowMsg(data.Msg);
+                    }
+                });
+            }
+            else {
+                ShowMsg("请勾选一行数据");
+            }
+        })
+
+        $("#submitdelete").click(function () {
+
+            ShowConfirmMsg("确定删除吗？", function () {
+                var data = new Array();
+                var isselect = false;
+                $("tr").each(function (index) {
+                    var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                    if (ischeck == "checked") {
+                        var ID = $(this).find("td:eq(1)").find("input[name*='ID']").not("input[name*='Bady']").val();
+
+                        var temp = {};
+
+                        temp.ID = ID;
+                        data.push(temp);
+                        isselect = true;
+                    }
+                });
+
+                if (isselect) {
+                    $.ajax({
+                        url: '/like/DeleteNoLike',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ data: data }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data.Result) {
+                            ShowMsg(data.Msg, function () {
+                                location.href = location.href;
+                            });
+                        }
+                        else {
+                            ShowMsg(data.Msg);
+                        }
+
+                    });
+                }
+                else {
+                    ShowMsg("请勾选一行数据");
+                }
+
+            })
+        })
+    })
+
+
+
+</script>

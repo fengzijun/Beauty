@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BeautyService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IBeautyService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="4201000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1262/BeautyService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1262/BeautyService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1262/BeautyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Beauty.Api.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBeautyService_CheckUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_CheckUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_Risgter_InputMessage">
+    <wsdl:part name="parameters" element="tns:Risgter" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_Risgter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RisgterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_ForgetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ForgetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_ForgetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ForgetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_UpdateUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_UpdateUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_UpdateGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGroup" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_UpdateGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUserSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserSetting" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUserSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUserTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserTask" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUserTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetShare_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShare" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetShare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetShareByBady_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShareByBady" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetShareByBady_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShareByBadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetBady_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBady" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetBady_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroup" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetLike_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLike" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetLike_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLikeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_CompleteShareTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteShareTask" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_CompleteShareTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteShareTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_CompletelikeTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompletelikeTask" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_CompletelikeTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompletelikeTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_LoginActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginActive" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_LoginActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_Log_InputMessage">
+    <wsdl:part name="parameters" element="tns:Log" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_Log_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetNotices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotices" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_GetNotices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoticesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_ReadBeautyNotice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadBeautyNotice" />
+  </wsdl:message>
+  <wsdl:message name="IBeautyService_ReadBeautyNotice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadBeautyNoticeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBeautyService">
+    <wsdl:operation name="CheckUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/CheckUser" message="tns:IBeautyService_CheckUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/CheckUserResponse" message="tns:IBeautyService_CheckUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Risgter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/Risgter" message="tns:IBeautyService_Risgter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/RisgterResponse" message="tns:IBeautyService_Risgter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ForgetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/ForgetPassword" message="tns:IBeautyService_ForgetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/ForgetPasswordResponse" message="tns:IBeautyService_ForgetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/UpdateUserInfo" message="tns:IBeautyService_UpdateUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/UpdateUserInfoResponse" message="tns:IBeautyService_UpdateUserInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/UpdateGroup" message="tns:IBeautyService_UpdateGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/UpdateGroupResponse" message="tns:IBeautyService_UpdateGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetUserSetting" message="tns:IBeautyService_GetUserSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetUserSettingResponse" message="tns:IBeautyService_GetUserSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetUserTask" message="tns:IBeautyService_GetUserTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetUserTaskResponse" message="tns:IBeautyService_GetUserTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShare">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetShare" message="tns:IBeautyService_GetShare_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetShareResponse" message="tns:IBeautyService_GetShare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShareByBady">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetShareByBady" message="tns:IBeautyService_GetShareByBady_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetShareByBadyResponse" message="tns:IBeautyService_GetShareByBady_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBady">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetBady" message="tns:IBeautyService_GetBady_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetBadyResponse" message="tns:IBeautyService_GetBady_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetGroup" message="tns:IBeautyService_GetGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetGroupResponse" message="tns:IBeautyService_GetGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLike">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetLike" message="tns:IBeautyService_GetLike_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetLikeResponse" message="tns:IBeautyService_GetLike_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteShareTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/CompleteShareTask" message="tns:IBeautyService_CompleteShareTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/CompleteShareTaskResponse" message="tns:IBeautyService_CompleteShareTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompletelikeTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/CompletelikeTask" message="tns:IBeautyService_CompletelikeTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/CompletelikeTaskResponse" message="tns:IBeautyService_CompletelikeTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginActive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/LoginActive" message="tns:IBeautyService_LoginActive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/LoginActiveResponse" message="tns:IBeautyService_LoginActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/Log" message="tns:IBeautyService_Log_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/LogResponse" message="tns:IBeautyService_Log_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetUser" message="tns:IBeautyService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetUserResponse" message="tns:IBeautyService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/GetNotices" message="tns:IBeautyService_GetNotices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/GetNoticesResponse" message="tns:IBeautyService_GetNotices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBeautyNotice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBeautyService/ReadBeautyNotice" message="tns:IBeautyService_ReadBeautyNotice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBeautyService/ReadBeautyNoticeResponse" message="tns:IBeautyService_ReadBeautyNotice_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IBeautyService" type="tns:IBeautyService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IBeautyService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUser">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/CheckUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Risgter">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/Risgter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgetPassword">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/ForgetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/UpdateUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/UpdateGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserSetting">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetUserSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserTask">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetUserTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShare">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetShare" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShareByBady">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetShareByBady" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBady">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetBady" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLike">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetLike" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteShareTask">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/CompleteShareTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompletelikeTask">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/CompletelikeTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginActive">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/LoginActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/Log" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotices">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/GetNotices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBeautyNotice">
+      <soap12:operation soapAction="http://tempuri.org/IBeautyService/ReadBeautyNotice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BeautyService">
+    <wsdl:port name="WSHttpBinding_IBeautyService" binding="tns:WSHttpBinding_IBeautyService">
+      <soap12:address location="http://localhost:1262/BeautyService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:1262/BeautyService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

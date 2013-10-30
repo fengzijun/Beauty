@@ -1,0 +1,40 @@
+﻿@model Beauty.Model.Notice
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("noticecreate", "admin", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   
+    @Html.ValidationSummary("", new { @class = "text-error" })
+  
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.Label("公告内容", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextAreaFor(m => m.Msg, new { rows = 5, cols= 10})
+
+        </div>
+    </div>
+
+   
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="保存" class="btn" /> <a class="btn" href="/admin/pricesetting">返回</a>
+            </div>
+    </div>
+}
+
+
+<script>
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(4)").addClass("active");
+
+        })
+    })
+</script>

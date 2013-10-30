@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D44B89E8-56F8-4F4D-9876-DA21432161B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Beauty.InterFace</RootNamespace>
+    <AssemblyName>Beauty.InterFace</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="IBady.cs" />
+    <Compile Include="IFirstPageArg.cs" />
+    <Compile Include="IFristPage.cs" />
+    <Compile Include="IGroup.cs" />
+    <Compile Include="IHelp.cs" />
+    <Compile Include="ILike.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="IMoney.cs" />
+    <Compile Include="INotice.cs" />
+    <Compile Include="IPrice.cs" />
+    <Compile Include="IRequestMoney.cs" />
+    <Compile Include="ISetting.cs" />
+    <Compile Include="IShare.cs" />
+    <Compile Include="ITask.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IUserAccount.cs" />
+    <Compile Include="IUserLoginCount.cs" />
+    <Compile Include="IUserSetting.cs" />
+    <Compile Include="IUserStore.cs" />
+    <Compile Include="IUserToken.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Beauty.Core\Beauty.Core.csproj">
+      <Project>{f6ec6a7f-d4ce-48f6-85d8-3a5dff662ed5}</Project>
+      <Name>Beauty.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Beauty.Model\Beauty.Model.csproj">
+      <Project>{ea56bfaf-3c09-4872-80d7-9891c6fa421c}</Project>
+      <Name>Beauty.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

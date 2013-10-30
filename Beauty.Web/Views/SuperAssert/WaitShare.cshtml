@@ -1,0 +1,124 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.Task>
+@using Beauty.Web.Page
+@{
+    
+}
+      <ul class="nav nav-pills">
+      <li class="active">
+        <a href="/superassert/Waitshare">待分享</a>
+      </li>
+      <li><a href="/superassert/WaitRecord">待收录</a></li>
+
+    </ul>
+  <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="centerandmiddle"></th>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">商品</th>
+                <th class="centerandmiddle">关键字</th>
+                <th class="centerandmiddle">评论</th>
+                <th class="centerandmiddle">收录杂志</th>
+                <th class="centerandmiddle">新建杂志</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="centerandmiddle">@Html.CheckBox(@Model[i].ID.ToString(), new { id = @Model[i].ID.ToString() })</td>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)  
+                        @Html.TextBoxFor(m => m[i].TaskType)   
+                        @Html.TextBoxFor(m => m[i].Taskid)   
+                        @Html.TextBoxFor(m => m[i].Runstatues)   
+                        @Html.TextBoxFor(m => m[i].Username)   
+                    </td>
+                                  <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].Bady.ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;">@Model[i].Bady.Badydescription</div></div> </td>
+                    <td class="centerandmiddle">@Model[i].Share.Keyword</td>
+                    <td class="centerandmiddle">@Model[i].Share.Comment</td>
+                    <td class="centerandmiddle">@Html.DropDownList("type",ViewBag.GroupList as IList<SelectListItem>)</td>
+                    <td class="centerandmiddle"><input type="text" name ="_newtype" class="middle"/></td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+        <div class="pull-right">
+            <input type="button" value="一键分享" class="btn" id="submit" />
+        </div>
+    </div>
+
+
+ <script>
+     $(function () {
+         $("ul[class='nav'] li[class!='dropdown']").removeClass();
+         $("ul[class='nav'] li:eq(3)").addClass("active");
+
+         $("#submit").click(function () {
+             var data = new Array();
+             var isselect = false;
+             $("tr").each(function (index) {
+
+                 var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                 if (ischeck == "checked") {
+                     var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+
+                     var TaskType = $(this).find("td:eq(1)").find("input[name*='TaskType']").val();
+                     var Taskid = $(this).find("td:eq(1)").find("input[name*='Taskid']").val();
+                     var Runstatues = $(this).find("td:eq(1)").find("input[name*='Runstatues']").val();
+                     var Username = $(this).find("td:eq(1)").find("input[name*='Username']").val();
+                     var Type = $(this).find("td:eq(5)").find("#type").val();
+                     var NewType = $(this).find("td:eq(6)").find("input[name*='newtype']").val();
+                     var Keyword = $(this).find("td:eq(3)").text();
+                     var Comment = $(this).find("td:eq(4)").text();
+                     var temp = {};
+                   
+                     temp.ID = ID;
+                     temp.Username = Username;
+                     temp.Taskid = Taskid;
+                     temp.TaskType = TaskType;
+                     temp.Runstatues = Runstatues;
+                     temp.Type = Type;
+                     temp.NewType = NewType;
+                     temp.Keyword = Keyword;
+                     temp.Comment = Comment;
+                     data.push(temp);
+
+                     isselect = true;
+                 }
+             })
+
+             if (isselect) {
+                 $.ajax({
+                     url: '/SuperAssert/postshare',
+                     type: 'POST',
+                     dataType: 'json',
+                     data: $.toJSON({ data: data }),
+                     contentType: 'application/json; charset=utf-8',
+                     success: function (data) {
+
+                     }
+                 }).done(function (data) {
+                     if (data) {
+                         ShowMsg("分享成功", function () {
+                             location.href = location.href;
+                         });
+                     }
+                     else {
+                         ShowMsg("分享失败");
+                     }
+                 });
+             }
+             else {
+                 ShowMsg("请勾选一行数据");
+             }
+         })
+
+     })
+
+ </script>

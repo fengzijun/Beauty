@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\bin\Debug\Beauty.Update.exe.config
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\bin\Debug\Beauty.Update.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\bin\Debug\Beauty.Update.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.Form1.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Update\obj\Debug\Beauty.Update.csprojResolveAssemblyReference.cache

@@ -1,0 +1,108 @@
+﻿@model Beauty.Web.Models.WebPrice
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Priceedit", "admin", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   
+    @Html.ValidationSummary("", new { @class = "text-error" })
+    <div class="hide">
+         @Html.TextBoxFor(m => m.Id)
+
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Pricename, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Pricename)
+
+        </div>
+    </div>
+    <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Price, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.Price)
+
+        </div>
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.PromotionPrice, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBoxFor(m => m.PromotionPrice)
+
+        </div>
+    </div>
+   
+   
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="保存" class="btn" /> 
+            <a class="btn" id="btn_del">删除</a>
+            <a class="btn" href="/admin/pricesetting">返回</a>
+            </div>
+    </div>
+}
+
+ <div id="dialog_simple" title="确定删除吗？" class="form-horizontal">
+
+ </div>
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(2)").addClass("active");
+
+
+        $("#btn_del").click(function () {
+            $('#dialog_simple').dialog('open');
+            return false;
+
+        });
+
+
+        $('#dialog_simple').dialog({
+            autoOpen: false,
+            width: 300,
+            buttons: {
+                "确定": function () {
+                    var self = this;
+
+                    $.ajax({
+                        url: '/admin/PriceDelete',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ id: $("#Id").val() }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data) {
+                            ShowMsg("删除成功", function () {
+                                location.href = "/admin/pricesetting";
+                            });
+                            
+                           
+                        }
+                        else {
+                            ShowMsg("删除失败");
+                        }
+                    });
+
+                },
+                "取消": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+    })
+
+</script>

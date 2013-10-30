@@ -1,0 +1,16 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.AppTest.exe.config
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.AppTest.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.AppTest.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Common.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.InterFace.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Model.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Service.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\HtmlAgilityPack.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.InterFace.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Model.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\bin\Release\Beauty.Service.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\obj\Release\Beauty.AppTest.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\obj\Release\Beauty.AppTest.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.AppTest\obj\Release\Beauty.AppTest.pdb

@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\bin\Release\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\bin\Release\Beauty.Core.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\obj\Release\Beauty.Core.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Core\obj\Release\Beauty.Core.pdb

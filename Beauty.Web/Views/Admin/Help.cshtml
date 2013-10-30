@@ -1,0 +1,67 @@
+﻿@model Beauty.Model.Help
+@{
+    ViewBag.Title = "Help";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+ <script type="text/javascript" charset="utf-8" src="@Url.Content("/Scripts/UeEdit/ueditor.config.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@Url.Content("/Scripts/UeEdit/ueditor.all.min.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@Url.Content("/Scripts/UeEdit/lang/zh-cn/zh-cn.js")"></script>
+ <link rel="stylesheet" type="text/css" href="@Url.Content("/Scripts/UeEdit/themes/default/css/ueditor.css")">
+@Html.Partial("Admin_NavSub")
+
+@using (Html.BeginForm("helppost", "admin", null, FormMethod.Post, new { @class = "form-horizontal" ,id ="form"})){
+    @Html.ValidationSummary("", new { @class = "text-error" })
+    <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+       
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @*@Html.TextArea("msgcontent")*@
+            <script type="text/plain" id="myEditor" style=" height:380px;">
+                @if(@Model!=null)
+                {
+                      @Html.Raw( @Model.msgcontent)
+                }
+            </script>
+        </div>
+    </div>
+
+   
+    <div class="control-group">
+        <div class="controls">
+    <input type="submit" value="保存" class="btn" id="submit"/> 
+            </div>
+    </div>
+
+}
+<style>
+
+    .form-horizontal .controls
+    {
+         margin-left:0px;
+    }
+</style>
+<script>
+    var ue = UE.getEditor('myEditor', {
+        imageUrl: domain + "/admin/uploadimg",
+        imageManagerUrl: domain + "/admin/GetUpLoadImgs",
+        imageManagerPath:"",
+        imagePath:""
+    });
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(3)").addClass("active");
+
+            $("ul[class='nav nav-pills'] li:eq(2)").addClass("active");
+
+           
+        })
+
+        //UE.getEditor('myEditor');
+        
+
+
+    })
+</script>

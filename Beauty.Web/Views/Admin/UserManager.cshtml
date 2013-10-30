@@ -1,0 +1,125 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.User>
+@using Beauty.Web.Page
+@using Beauty.Model
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+  <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+              
+                <th class="centerandmiddle">用户名</th>
+                <th class="centerandmiddle">角色</th>
+                <th class="centerandmiddle">手机</th>
+                <th class="centerandmiddle">邮箱</th>
+                <th class="centerandmiddle">是否是超级主编/达人</th>
+                <th class="centerandmiddle">积分</th>
+                <th class="centerandmiddle">在线</th>
+                 <th class="centerandmiddle">美丽说帐号</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                  
+                    <td class="centerandmiddle"><a href="/admin/userEdit?username=@Model[i].Username">@Model[i].Username</a></td>
+                    <td class="centerandmiddle">
+                        @if (Model[i].Role == 1)
+                        {
+                            <text>一级代理</text>
+                        }
+                        else
+                        {
+                            <text>普通用户</text>
+                        }
+                    </td>
+                    <td class="centerandmiddle">@Model[i].Mobile</td>
+                    <td class="centerandmiddle">@Model[i].Email</td>
+                    <td class="centerandmiddle">  
+                        @if (Model[i].IsSuper)
+                        {
+                            <text>是</text>
+                        }
+                        else
+                        {
+                            <text>否</text>
+                        }</td>
+                     <td class="centerandmiddle">@Model[i].Point</td>
+                     <td class="centerandmiddle">  
+                        @if (Model[i].IsLogin)
+                        {
+                            <text>是</text>
+                        }
+                        else
+                        {
+                            <text>否</text>
+                        }</td>
+                    <td class="centerandmiddle">
+                        @if (Model[i].Accounts != null)
+                        {
+                            for (var y = 0; y < Model[i].Accounts.Count;y++ )
+                            {
+                                if (y == Model[i].Accounts.Count - 1)
+                                {
+                                    
+                                    if(Model[i].Accounts[y].type == 0)
+                                    {
+                                         <a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a>
+                                    }
+                                    else if (Model[i].Accounts[y].type == 1)
+                                    {
+                                        <img src="@Url.Content("~/images/super.png")" /> <a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a>
+                                    }
+                                    else if (Model[i].Accounts[y].type == 2)
+                                    {
+                                         <img src="@Url.Content("~/images/daren.png")" /> <a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a>
+                                    }
+                                }
+                                else
+                                {
+                                    if (Model[i].Accounts[y].type == 0)
+                                    {
+                                        <a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a><text>,</text>
+                                    }
+                                    else if (Model[i].Accounts[y].type == 1)
+                                    {
+                                        <img src="@Url.Content("~/images/super.png")" /><a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a><text>,</text>
+                                    }
+                                    else if (Model[i].Accounts[y].type == 2)
+                                    {
+                                        <img src="@Url.Content("~/images/daren.png")" /><a href="http://www.meilishuo.com/@Model[i].Accounts[y].twitterid" target="_blank">@Model[i].Accounts[y].account</a><text>,</text>
+                                    }
+                                }
+                            }
+                        }
+
+                    </td>
+
+                </tr>
+                
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+       
+    </div>
+    
+
+<script>
+
+    $(function () {
+        $(function () {
+            $("ul[class='nav'] li[class!='dropdown']").removeClass();
+            $("ul[class='nav'] li:eq(0)").addClass("active");
+
+        })
+    })
+</script>
+
+

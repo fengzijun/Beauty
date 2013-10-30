@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>美丽说分享宝后台管理</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/js")
+    <script>
+        var domain = '@ViewBag.Domain';
+
+    </script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+            
+               
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/admin/UserManager">用户管理</a></li>
+                        <li><a href="/admin/setting">系统设置</a></li>
+                        <li><a href="/admin/pricesetting">产品价格</a></li>
+                         <li><a href="/admin/systemlog">系统操作</a></li>
+                         <li><a href="/admin/RequestMoneyNodeal">提现</a></li>
+                    </ul>
+                    <div class="navbar-form pull-right">
+     @*                   <input class="span2" type="text" placeholder="Email">
+                        <input class="span2" type="password" placeholder="Password">
+                        <button type="submit" class="btn">Sign in</button>*@
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        @RenderBody()
+        <div class="control-group">
+            <div class="controls">
+                @Html.Partial("_CrossActionMsg")
+                </div>
+        </div>
+    </div>
+     <div id="dialog-message" title="提示">
+                  
+                </div>
+    <footer>
+    </footer>
+    
+                   
+
+
+</body>
+
+
+</html>

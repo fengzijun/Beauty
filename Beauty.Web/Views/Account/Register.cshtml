@@ -1,0 +1,171 @@
+﻿@model Beauty.Web.Models.RegisterModel
+@{
+    ViewBag.Title = "注册";
+}
+
+<script>
+
+    function RefreshValidateCode(obj) {
+        obj.src = "/Account/ValidateCode/" + Math.floor(Math.random() * 10000);
+    }
+</script>
+@using (Html.BeginForm("register", "account", new { refer = ViewBag.refer },FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new  {@class ="text-error" })
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">基本信息
+                </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.UserName)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.PasswordFor(m => m.Password)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.PasswordFor(m => m.ConfirmPassword)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Email)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Mobile, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Mobile)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.ZFB, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.ZFB)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                     <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Refer, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Refer)<span style="margin-left:10px;" class="red">*</span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.Label("验证码", new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBox("code")
+                            <img alt="点击刷新验证码！" title="点击刷新验证码！" src="/account/ValidateCode" style="cursor: pointer;"
+                                onclick="RefreshValidateCode(this);" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">详细信息
+                </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+                 <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.QQ, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.QQ)
+
+                        </div>
+                 </div>
+                 <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Province, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Province)
+
+                        </div>
+                 </div>
+                <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.City)
+
+                        </div>
+                 </div>
+                  <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.ShopAddress, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.ShopAddress)
+
+                        </div>
+                 </div>
+                 <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Card, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Card)
+
+                        </div>
+                 </div>
+                 <div class="control-group">
+                        @*<label class="control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Bank, new { @class = "control-label" })
+                        <div class="controls">
+                            @*<input type="text" id="inputEmail" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Bank)
+
+                        </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-heading">
+        <input type="submit" value="提交" class="btn" />
+        &nbsp;
+        <input type="reset" value="重置" class="btn" />
+    </div>
+}
+
+

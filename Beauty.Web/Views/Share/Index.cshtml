@@ -1,0 +1,424 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.Bady>
+@using Beauty.Web.Page
+@{
+    
+}
+
+@using (Html.BeginForm("PostShare", "Share", FormMethod.Post, new {id="shareform" }))
+{
+  <ul class="nav nav-pills">
+      <li class="active">
+        <a href="/share/index">未分享</a>
+      </li>
+      <li><a href="/share/sharing">正在分享</a></li>
+      <li><a href="/share/hasshared">已分享</a></li>
+
+    </ul>
+<div class="input-append text-right">
+      <input class="span2" id="key" type="text">
+      <button class="btn" id="btnsearh" type="button">搜索</button>&nbsp;&nbsp;
+      <a class="btn" id="btnupdate" >上传宝贝</a>
+</div>
+    <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="centerandmiddle "></th>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">商品列表</th>
+                <th class="centerandmiddle">5000粉及以下</th>
+                <th class="centerandmiddle">5000-1万粉</th>
+                <th class="centerandmiddle">10001-2万粉</th>
+                <th class="centerandmiddle">20001-3万粉</th>
+                <th class="centerandmiddle">30001-5万粉</th>
+                <th class="centerandmiddle">5万粉以上</th>
+                <th class="centerandmiddle">超级主编/达人</th>
+                <th class="centerandmiddle">评论</th>
+                <th class="centerandmiddle">关键词</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td class="centerandmiddle">@Html.CheckBox(@Model[i].ID.ToString(), new { id = @Model[i].ID.ToString() })</td>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)   
+                        @Html.TextBoxFor(m => m[i].Username)   
+                    </td>
+                    <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;">@Model[i].Badydescription</div></div> </td>
+                    <td class="centerandmiddle"><input type="checkbox" value="5000" name ="_Liked1"/></td>
+                    <td class="centerandmiddle"><input type="checkbox" value="10000" name ="_Liked2"/></td>
+                    <td class="centerandmiddle"><input type="checkbox" value="20000" name ="_Liked3"/></td>
+                    <td class="centerandmiddle"><input type="checkbox" value="30000" name ="_Liked4"/></td>
+                    <td class="centerandmiddle"><input type="checkbox" value="50000" name ="_Liked5"/></td>
+                    <td class="centerandmiddle"><input type="checkbox" value="50001" name ="_Liked6"/></td>
+                    <td class="centerandmiddle">@Html.CheckBox(@Model[i].ID.ToString() + "_IsSuper")</td>
+                    <td class="centerandmiddle"><textarea name ="_Comment" rows="3" cols="3" style=" width:100px;" ></textarea></td>
+                    <td class="centerandmiddle"><textarea name ="_Keyword" rows="3" cols="3" style=" width:100px;" ></textarea></td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+        <div class="pull-right">
+            <input type="button" value="一键分享" class="btn" id="submit" />
+            <input type="button" value="删除" class="btn" id="submitdelete" />
+        </div>
+    </div>
+    
+
+}
+
+ <div id="dialog_simple" title="添加宝贝" class="form-horizontal">
+     
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+         @Html.Label("链接", new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.TextBox("LinkText", null, new {id = "LinkText" })
+          
+        </div>
+    </div>
+  
+
+   
+ </div>
+
+<div id="confirm_dialog" title="提示信息" class="form-horizontal">
+     
+     
+ 
+ </div>
+
+
+<script>
+    $(function () {
+
+        $("input[name*='_Liked']").each(function () {
+            $(this).change(function () {
+                var name = $(this).attr("name");
+                $(this).parent().parent().find("input[name*='_Liked']").each(function () {
+                    if ($(this).attr("name") != name) {
+                        $(this).attr("checked", false);
+                    }
+                })
+              
+            })
+        })
+
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(0)").addClass("active");
+        $("#btnsearh").click(function () {
+            location.href = domain + "/share/index?key=" + $('#key').val();
+        });
+
+        $("#btnupdate").click(function () {
+            $('#dialog_simple').dialog('open');
+            return false;
+
+        });
+
+        $('#dialog_simple').dialog({
+            autoOpen: false,
+            width: 600,
+            buttons: {
+                "提交": function () {
+                    var self = this;
+                 
+                    //if ($("#LinkText").val().toLowerCase().indexOf("taobao") < 0 && $("#LinkText").val().toLowerCase().indexOf("tmall") < 0 && $("#LinkText").val().toLowerCase().indexOf("wanggou") < 0) {
+                  
+                    //    ShowMsg("链接无效，请输入正确的链接");
+                    //    return;
+                    //}
+                    var data = new Array();
+                    var Lnk = $("#LinkText").val();
+                 
+                    $(".ui-dialog-buttonset").find("button:eq(0) span").text("正在上传");
+                    $.ajax({
+                        url: '/share/update',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ link: Lnk }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data.Result) {
+                       
+                            ShowMsg(data.Msg, function () {
+                                location.href = location.href;
+                            });
+                            $(self).dialog("close");
+                            
+                        }
+                        else {
+                            ShowMsg("链接无效，请输入正确的链接");
+                        }
+                        $(".ui-dialog-buttonset").find("button:eq(0) span").text("提交");
+                    });
+
+                },
+                "取消": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+
+        $('#confirm_dialog').html("您要求的用户没有在线，可能不会即时分享。您还要他/她分享吗？").dialog({
+            autoOpen: false,
+            width: 600,
+            buttons: {
+                "是": function () {
+                    $(this).dialog("close");
+                    submit();
+
+                },
+                "重新选择": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+
+
+        $("#submit").click(function () {
+
+            var data = new Array();
+            var isselect = false;
+            $("tr").each(function (index) {
+
+                var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                if (ischeck == "checked") {
+                    var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+
+                    var Username = $(this).find("td:eq(1)").find("input[name*='Username']").val();
+                    var Liked = 0;
+
+                    if ($(this).find("td:eq(3) input").attr("checked") == "checked") {
+                        Liked = 5000;
+                    }
+                    else if ($(this).find("td:eq(4) input").attr("checked") == "checked") {
+                        Liked = 10000;
+                    }
+                    else if ($(this).find("td:eq(5) input").attr("checked") == "checked") {
+                        Liked = 20000;
+                    }
+                    else if ($(this).find("td:eq(6) input").attr("checked") == "checked") {
+                        Liked = 30000;
+                    }
+                    else if ($(this).find("td:eq(7) input").attr("checked") == "checked") {
+                        Liked = 50000;
+                    }
+                    else if ($(this).find("td:eq(8) input").attr("checked") == "checked") {
+                        Liked = 50001;
+                    }
+
+
+                    var issuper = $(this).find("td:eq(9)").find("input[type='checkbox']").attr("checked") == "checked" ? true : false;
+                    var Comment = $(this).find("td:eq(10)").find("textarea[name*='Comment']").val();
+                    var Keyword = $(this).find("td:eq(11)").find("textarea[name*='Keyword']").val();
+                    var temp = {};
+                    temp.Bady = {};
+                    temp.Bady.ID = ID;
+                    temp.Username = Username;
+                    if (Liked == null || Liked == "" || Liked == undefined) {
+                        temp.Liked = 0;
+                    }
+                    else {
+                        temp.Liked = Liked;
+                    }
+                    temp.issuper = issuper;
+
+                    temp.Comment = Comment;
+                    temp.Keyword = Keyword;
+                    data.push(temp);
+
+                    isselect = true;
+                }
+            })
+
+            if (isselect) {
+                $.ajax({
+                    url: '/share/CheckUser',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $.toJSON({ data: data }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    }
+                }).done(function (d) {
+
+                    if (d == 0) {
+                        $.ajax({
+                            url: '/share/postshare',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: $.toJSON({ data: data }),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+
+                            }
+                        }).done(function (data) {
+                            if (data.Result) {
+                                ShowMsg(data.Msg, function () {
+                                    location.href = location.href;
+                                });
+                            }
+                            else {
+                                ShowMsg(data.Msg);
+                            }
+                        });
+                    }
+                    else if (d == 1) {
+                        $('#confirm_dialog').dialog('open');
+
+                    }
+                    else if (d == 2) {
+                        ShowMsg("我们还没有符合您刚才所选要求的用户，请重新再选，抱歉！");
+                    }
+                });
+            }
+            else {
+                ShowMsg("请勾选一行数据");
+            }
+        })
+
+
+        function submit() {
+            var data = new Array();
+            var isselect = false;
+            $("tr").each(function (index) {
+
+                var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                if (ischeck == "checked") {
+                    var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+
+                    var Username = $(this).find("td:eq(1)").find("input[name*='Username']").val();
+                    var Liked = 0;
+
+                    if ($(this).find("td:eq(3) input").attr("checked") == "checked") {
+                        Liked = 5000;
+                    }
+                    else if ($(this).find("td:eq(4) input").attr("checked") == "checked") {
+                        Liked = 10000;
+                    }
+                    else if ($(this).find("td:eq(5) input").attr("checked") == "checked") {
+                        Liked = 20000;
+                    }
+                    else if ($(this).find("td:eq(6) input").attr("checked") == "checked") {
+                        Liked = 30000;
+                    }
+                    else if ($(this).find("td:eq(7) input").attr("checked") == "checked") {
+                        Liked = 50000;
+                    }
+                    else if ($(this).find("td:eq(8) input").attr("checked") == "checked") {
+                        Liked = 50001;
+                    }
+
+
+                    var issuper = $(this).find("td:eq(9)").find("input[type='checkbox']").attr("checked") == "checked" ? true : false;
+                    var Comment = $(this).find("td:eq(10)").find("textarea[name*='Comment']").val();
+                    var Keyword = $(this).find("td:eq(11)").find("textarea[name*='Keyword']").val();
+                    var temp = {};
+                    temp.Bady = {};
+                    temp.Bady.ID = ID;
+                    temp.Username = Username;
+                    if (Liked == null || Liked == "" || Liked == undefined) {
+                        temp.Liked = 0;
+                    }
+                    else {
+                        temp.Liked = Liked;
+                    }
+                    temp.issuper = issuper;
+
+                    temp.Comment = Comment;
+                    temp.Keyword = Keyword;
+                    data.push(temp);
+
+                    isselect = true;
+                }
+            })
+
+            if (isselect) {
+                $.ajax({
+                    url: '/share/postshare',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $.toJSON({ data: data }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    }
+                }).done(function (data) {
+                    if (data.Result) {
+                        ShowMsg(data.Msg, function () {
+                            location.href = location.href;
+                        });
+                    }
+                    else {
+                        ShowMsg(data.Msg);
+                    }
+                });
+            }
+            else {
+                ShowMsg("请勾选一行数据");
+            }
+        }
+
+        $("#submitdelete").click(function () {
+
+            ShowConfirmMsg("确定删除吗？", function () {
+                var data = new Array();
+                var isselect = false;
+                $("tr").each(function (index) {
+                    var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                    if (ischeck == "checked") {
+                        var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+        
+                        var temp = {};
+                      
+                        temp.ID = ID;
+                        data.push(temp);
+                        isselect = true;
+                    }
+                });
+
+                if (isselect) {
+                    $.ajax({
+                        url: '/share/DeleteNoShare',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ data: data }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data.Result) {
+                            ShowMsg(data.Msg, function () {
+                                location.href = location.href;
+                            });
+                        }
+                        else {
+                            ShowMsg(data.Msg);
+                        }
+                     
+                    });
+                }
+                else {
+                    ShowMsg("请勾选一行数据");
+                }
+                
+            })
+        })
+    })
+
+</script>

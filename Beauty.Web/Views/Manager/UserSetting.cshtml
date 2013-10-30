@@ -1,0 +1,142 @@
+﻿@model IList<Beauty.Model.SettingGroup>
+
+@{
+    ViewBag.Title = "UserSetting";
+}
+
+@Html.Partial("NavSub")
+@using (Html.BeginForm("UserSetting", "manager", FormMethod.Post, new { @class = "form-horizontal margintop" }))
+{
+    
+    for (var i = 0; i < Model.Count; i++)
+    {
+        <fieldset>
+        <legend>@Model[i].Category</legend>
+        @for (var j = 0; j < Model[i].settings.Count; j++)
+        {
+
+            if (Model[i].settings[j].Type == "0")
+            {
+                 <span >@Model[i].settings[j].Name</span>
+                @Html.TextBoxFor(m => m[i].settings[j].Value, new { @class = "small", tname = @Model[i].settings[j].Name, id = Model[i].settings[j].ID });
+            }
+            else if (Model[i].settings[j].Type == "1")
+            {
+
+
+                if (Model[i].settings[j].Value == "true")
+                {
+                    <label class="checkbox">
+                        <input type="checkbox" name="@Model[i].settings[j].Name" checked="checked" id="@Model[i].settings[j].ID"> @Model[i].settings[j].Name
+                    </label>
+                }
+                else
+                {
+                    <label class="checkbox" id="">
+                        <input type="checkbox" name="@Model[i].settings[j].Name" id="@Model[i].settings[j].ID"> @Model[i].settings[j].Name
+                    </label>
+                }
+
+
+            }
+            else if (Model[i].settings[j].Type == "2")
+            {
+                if (Model[i].settings[j].Value == "true")
+                {
+                     <label class="radio">
+                        <input type="radio" sname="@Model[i].settings[j].Name" checked="checked" id="@Model[i].settings[j].ID" name="@Model[i].settings[j].Category" category="@Model[i].settings[j].Category" sType="@Model[i].settings[j].Type" Statues="@Model[i].settings[j].Statues"> @Model[i].settings[j].Name
+                    </label>
+                }
+                else
+                {
+                     <label class="radio" id="">
+                        <input type="radio"  sname="@Model[i].settings[j].Name" id="@Model[i].settings[j].ID" name="@Model[i].settings[j].Category" category="@Model[i].settings[j].Category" sType="@Model[i].settings[j].Type" Statues="@Model[i].settings[j].Statues"> @Model[i].settings[j].Name
+                    </label>
+                }
+            }
+        }
+   
+ 
+    
+      </fieldset>
+    
+      
+    }
+    
+     <div class="pull-right">
+            <input type="button" value="保存" class="btn" id="submit" />
+        </div>
+}
+
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(5)").addClass("active");
+
+        $("ul[class='nav nav-pills'] li:eq(0)").addClass("active");
+
+        $("#submit").click(function () {
+            var data = [];
+
+            $("input[type='checkbox']").each(function () {
+                var temp = {};
+                temp.Settingid = $(this).attr("id");
+
+                if ($(this).attr("checked") == "checked") {
+                    temp.Value = "true";
+                }
+                else {
+                    temp.Value = "false";
+                }
+                data.push(temp);
+            })
+
+            $("input[type='radio']").each(function () {
+                var temp = {};
+                temp.Settingid = $(this).attr("id");
+
+                if ($(this).attr("checked") == "checked") {
+                    temp.Value = "true";
+                }
+                else {
+                    temp.Value = "false";
+                }
+              
+                data.push(temp);
+            })
+
+            $("input[type='text']").each(function () {
+                var temp = {};
+                temp.Settingid = $(this).attr("ID");
+
+                temp.Value = $(this).val();
+                data.push(temp);
+            })
+
+            $.ajax({
+                url: '/manager/usersetting',
+                type: 'POST',
+                dataType: 'json',
+                data: $.toJSON({ data: data }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+                }
+            }).done(function (data) {
+                if (data) {
+                    ShowMsg("保存成功", function () {
+                        location.href = location.href;
+                    });
+
+                }
+                else {
+                    ShowMsg("保存失败");
+                }
+            });
+        });
+       
+    })
+
+
+</script>

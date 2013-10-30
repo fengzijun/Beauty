@@ -1,0 +1,14 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\Beauty.App.exe.config
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\Beauty.App.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\Beauty.App.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\Beauty.Common.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\HtmlAgilityPack.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\bin\x86\Debug\Beauty.Common.pdb
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.ForgetPassword.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.Login.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.Main.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.Register.resources
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.exe
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.App\obj\x86\Debug\Beauty.App.pdb

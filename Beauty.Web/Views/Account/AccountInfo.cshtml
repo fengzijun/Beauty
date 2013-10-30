@@ -1,0 +1,151 @@
+﻿@model Beauty.Web.Models.WebUser
+@{
+    ViewBag.Title = "AccountInfo";
+}
+
+<style>
+    .form-horizontal .control-label {
+        padding-top:0px;
+    }
+
+</style>
+@Html.Partial("NavSub")
+@using (Html.BeginForm("AccountInfo", "account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal margintop" }))
+{
+   
+    @Html.ValidationSummary("", new { @class = "text-error" })
+  <div class="hidden">
+      @Html.EditorFor(m => m.UserName)
+
+  </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DisplayFor(m => m.UserName)
+
+        </div>
+    </div>
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Point, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DisplayFor(m => m.Point)
+
+        </div>
+
+    </div>
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.FreezePoint, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DisplayFor(m => m.FreezePoint)
+
+        </div>
+
+    </div>
+         <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Balance, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.DisplayFor(m => m.Balance)
+
+        </div>
+
+    </div>
+     <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.Email)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.QQ, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.QQ)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Mobile, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.Mobile)
+
+        </div>
+    </div>
+      <div class="control-group">
+        @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.Province, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.Province)
+
+        </div>
+
+    </div>
+    
+          <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.City, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.City)
+
+        </div>
+
+    </div>
+     
+            <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.ShopAddress, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.ShopAddress)
+
+        </div>
+
+    </div>
+
+     <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+        @Html.LabelFor(m => m.ZFB, new { @class = "control-label" })
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+            @Html.EditorFor(m => m.ZFB)
+
+        </div>
+
+    </div>
+       <div class="control-group">
+      @*<label class="control-label" for="inputEmail">Email</label>*@
+      
+        <div class="controls">
+            @*<input type="text" id="inputEmail" placeholder="Email">*@
+           
+            <input type="submit" value="保存" class="btn" />
+        </div>
+
+    </div>
+   
+}
+<script>
+    $(function () {
+
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(5)").addClass("active");
+
+        $("ul[class='nav nav-pills'] li:eq(3)").addClass("active");
+    })
+
+</script>

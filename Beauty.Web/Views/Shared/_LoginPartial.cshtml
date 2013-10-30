@@ -1,0 +1,10 @@
+﻿@if (Request.IsAuthenticated) {
+
+    @Html.ActionLink(User.Identity.Name, "Index", "Home", routeValues: null, htmlAttributes: new {@class="btn btn-link"  })
+    @Html.ActionLink("退出", "LogOff", "Account", routeValues: null, htmlAttributes: new { @class="btn btnsmall" })
+
+} else {
+
+   @Html.ActionLink("登录", "login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink",@class="btn btnsmall" })
+    
+}

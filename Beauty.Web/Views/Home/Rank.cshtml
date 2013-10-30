@@ -1,0 +1,69 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.UserStore>
+@using Beauty.Web.Page
+@{
+   
+}
+    <div class="alert alert-block">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>提示</h4>
+    <p>查排名功能会每隔六个小时左右刷新你宝贝的排名</p>
+    </div>
+ <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+               
+                <th class="centerandmiddle">商品列表</th>
+                <th class="centerandmiddle">喜欢</th>
+                <th class="centerandmiddle">收录</th>
+                <th class="centerandmiddle">评论</th>
+                <th class="centerandmiddle">分类</th>
+                <th class="centerandmiddle">排名</th>
+                <th class="centerandmiddle">页数</th>
+            </tr>
+        </thead>
+        <tbody>
+         @if(Model!=null && Model.Count>0)
+         {
+            for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                   
+                    <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].Bady.ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;">@Model[i].Bady.Badydescription</div></div> </td>
+                    <td class="centerandmiddle">@Model[i].Liked</td>
+                    <td class="centerandmiddle">@Model[i].Record</td>
+                    <td class="centerandmiddle">@Model[i].Comment</td>
+                    <td class="centerandmiddle">@Model[i].Type</td>
+                    <td class="centerandmiddle">
+                        @if(Model[i].Rank!=0)
+                        {
+                            @Model[i].Rank
+                        }
+                    </td>
+                    <td class="centerandmiddle">  @if(Model[i].Page!=0)
+                        {
+                            @Model[i].Page
+                        }
+
+                    </td>
+                </tr>
+            }
+         }
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+       
+    </div>
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(2)").addClass("active");
+
+    })
+
+
+</script>
+    

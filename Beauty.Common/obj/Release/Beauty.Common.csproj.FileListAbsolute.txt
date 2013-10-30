@@ -1,0 +1,3 @@
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Common\bin\Release\Beauty.Common.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Common\bin\Release\HtmlAgilityPack.dll
+C:\Users\Administrator\Desktop\Beauty.Web\Beauty.Common\obj\Release\Beauty.Common.dll

@@ -1,0 +1,164 @@
+﻿@model Beauty.Web.Page.PagedList<Beauty.Model.Share>
+@using Beauty.Web.Page
+@{
+    
+}
+
+@using (Html.BeginForm("PostShare", "Share", FormMethod.Post, new {id="shareform" }))
+{
+   <ul class="nav nav-pills">
+      <li >
+        <a href="/share/index">未分享</a>
+      </li>
+         <li><a href="/share/sharing">正在分享</a></li>
+      <li class="active"><a href="/share/hasshared">已分享</a></li>
+
+    </ul>
+    
+
+    <table class="table table-bordered table-hover table-condensed text-center">
+        <thead>
+            <tr>
+                <th class="centerandmiddle "></th>
+                <th class="hidden"></th>
+                <th class="centerandmiddle">商品列表</th>
+                <th class="centerandmiddle">粉设置</th>
+                <th class="centerandmiddle">超级主编/达人</th>
+                <th class="centerandmiddle">评论</th>
+                <th class="centerandmiddle">关键词</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                
+                <tr>
+                   <td class="centerandmiddle">@Html.CheckBox(@Model[i].ID.ToString(), new { id = @Model[i].ID.ToString() })</td>
+                    <td class="hidden">
+                        @Html.TextBoxFor(m => m[i].ID)   
+                        @Html.TextBoxFor(m => m[i].Username)   
+                    </td>
+         <td class="centerandmiddle" style=" width:190px;"><div class="clearfix"><div class="pull-left"><img src="@Model[i].Bady.ImageUrl" height="60" width="60" style=" height:60px; width:60px;" /></div><div class="pull-left" style="width:120px; padding-left:5px;"><a href="http://www.meilishuo.com/share/@Model[i].Bady.Twitterid" target="_blank">@Model[i].Bady.Badydescription</a> </div></div> </td>
+                    <td class="centerandmiddle">
+                     @if (Model[i].Liked == 5000)
+                     {
+                         <text>5000以下</text>
+                     }
+                     else if (Model[i].Liked == 10000)
+                     {
+                          <text>5000-10000</text>
+                     }
+                     else if (Model[i].Liked == 20000)
+                     {
+                          <text>10000-20000</text>
+                     }
+                     else if (Model[i].Liked == 30000)
+                     {
+                          <text>20000-30000</text>
+                     }
+                     else if (Model[i].Liked == 50000)
+                     {
+                          <text>30000-50000</text>
+                     }
+                     else if (Model[i].Liked == 50001)
+                     {
+                          <text>50000以上</text>
+                     }
+                     else
+                     {
+                         @Model[i].Liked
+                     }
+                     
+                        </td>
+                    <td class="centerandmiddle">
+                        @if (Model[i].IsSuper)
+                        {
+                            <text>是</text>
+                        }
+                        else
+                        {
+                            <text>否</text>
+                        }
+                    </td>
+                    <td class="centerandmiddle">@Model[i].Comment</td>
+                    <td class="centerandmiddle">@Model[i].Keyword</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="pagination">
+
+        @Html.Pager(Model)
+         <div class="pull-right">
+           
+            <input type="button" value="删除" class="btn" id="submitdelete" />
+        </div>
+    </div>
+    
+
+}
+
+
+
+
+<script>
+    $(function () {
+        $("ul[class='nav'] li[class!='dropdown']").removeClass();
+        $("ul[class='nav'] li:eq(0)").addClass("active");
+        $("#btnsearh").click(function () {
+            location.href = domain + "/share/hasshared?key=" + $('#key').val();
+        });
+
+      
+
+        $("#submitdelete").click(function () {
+
+            ShowConfirmMsg("确定删除吗？", function () {
+                var data = new Array();
+                var isselect = false;
+                $("tr").each(function (index) {
+                    var ischeck = $(this).find("td:eq(0)").find("input[type='checkbox']").attr("checked");
+                    if (ischeck == "checked") {
+                        var ID = $(this).find("td:eq(1)").find("input[name*='ID']").val();
+
+                        var temp = {};
+
+                        temp.ID = ID;
+                        data.push(temp);
+                        isselect = true;
+                    }
+                });
+
+                if (isselect) {
+                    $.ajax({
+                        url: '/share/DeleteShared',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $.toJSON({ data: data }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+
+                        }
+                    }).done(function (data) {
+                        if (data.Result) {
+                            ShowMsg(data.Msg, function () {
+                                location.href = location.href;
+                            });
+                        }
+                        else {
+                            ShowMsg(data.Msg);
+                        }
+
+                    });
+                }
+                else {
+                    ShowMsg("请勾选一行数据");
+                }
+
+            })
+        })
+    })
+
+</script>

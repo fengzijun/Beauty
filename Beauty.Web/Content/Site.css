@@ -1,0 +1,170 @@
+﻿body
+{
+    padding-top: 41px; /* 60px to make the container go all the way to the bottom of the topbar */
+    font-family: "黑体" !important;
+    font-size: 12px !important;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.centerandmiddle
+{
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.small
+{
+    width: 50px !important;
+}
+
+.middle
+{
+    width: 100px !important;
+}
+
+.long
+{
+    width: 150px !important;
+}
+
+.large
+{
+    width: 200px !important;
+}
+
+table
+{
+    border-collapse: separate;
+
+}
+
+thead th
+{
+    background-color: #fdf7f7;
+    color: #d72980;
+
+}
+
+.page
+{
+   border:2px solid #ff1e72;
+   padding-top:20px;
+   padding-left:20px;
+   padding-right:20px;
+}
+
+tbody td
+{
+    background-color: #fbe7e9;
+}
+
+tr td:first-child,
+tr th:first-child
+{
+
+}
+
+tr td:last-child,
+tr th:last-child
+{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.current a
+{
+    background-color: #ff4189 !important;
+    color:white;
+    border:1px solid #ff4189 !important;
+}
+
+form {
+
+}
+
+.navbar-inner {
+  background-color: #2c2c2c; /* fallback color, place your own */
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+}
+
+.ui-dialog .ui-dialog-titlebar
+{
+     background-color:#fe2776;
+    
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title
+{
+        color:white !important;
+}
+
+.ui-dialog
+{
+    padding:0;
+}
+
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button
+{
+     display: inline-block;
+  *display: inline;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #ff78ab;
+  *background-color: #fe2776;
+  background-image: -moz-linear-gradient(top, #fe2776, #fe2776);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fe2776), to(#fe2776));
+  background-image: -webkit-linear-gradient(top, #fe2776, #fe2776);
+  background-image: -o-linear-gradient(top, #fe2776, #fe2776);
+  background-image: linear-gradient(to bottom, #fe2776, #fe2776);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-color: #fe2776 #fe2776 #fe2776;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #fe2776;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffe2776', endColorstr='#fffe2776', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button:hover,
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button:focus,
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button:active,
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button.active,
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button.disabled,
+.ui-dialog-buttonpane .ui-dialog-buttonset .ui-button[disabled] {
+  color: #ffffff;
+  background-color: #fe2776;
+  *background-color: #ff78ab;
+}
